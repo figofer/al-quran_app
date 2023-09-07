@@ -46,15 +46,13 @@ const QuranSurahList: React.FC = () => {
                 <Nav />
                 <div className='flex flex-col gap-2 px-2 py-4'>
                     <p className='text-white/60'>Assalamualaikum</p>
-                    <b className='text-3xl'>Figo Ferdyian</b>
+                    <b className='text-3xl'>Beliau</b>
                     <JadwalSholat />
                 </div>
                 <div className='flex flex-col gap-6'>
                     <div className='flex justify-between px-5'>
                         <span className=' border-b-4 rounded-lg border-unggu pb-2 '>Surah</span>
-                        <span className='  '>Para</span>
-                        <span className=' '>Page</span>
-                        <span className=' '>Hjb</span>
+                        
                     </div>
 
                     <input

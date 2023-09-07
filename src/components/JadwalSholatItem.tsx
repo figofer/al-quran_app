@@ -71,7 +71,7 @@ const JadwalSholat: React.FC = () => {
                 </div>
                 <div className="flex justify-between">
                     <p>{waktuMundur}</p>
-                    <p>Kota Pekanbaru</p>
+                    <p>Kota Yogyakarta</p>
                 </div>
             </div>
         </div>
