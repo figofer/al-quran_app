@@ -1,28 +1,20 @@
-# React + TypeScript + Vite
+# Baca Quran
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Baca Quran adalah sebuah aplikasi yang dirancang untuk memudahkan pengguna dalam membaca dan menjelajahi teks suci Al-Quran. Aplikasi ini dibangun menggunakan teknologi modern, dan memberikan pengalaman yang bersih, interaktif, dan mendalam untuk menjelajahi ayat-ayat Al-Quran.
 
-Currently, two official plugins are available:
+![Tampilan Aplikasi](./src/assets/Screenshot%202023-09-07%20120748.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Fitur Utama
 
-## Expanding the ESLint configuration
+- **Baca Teks Quran**: Akses teks Al-Quran lengkap dengan terjemahan dalam berbagai bahasa.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Navigasi yang Mudah**: Temukan surah, ayat, dan juz dengan cepat melalui navigasi yang intuitif.
 
-- Configure the top-level `parserOptions` property like this:
+- **Audio Berkualitas Tinggi**: Dengarkan bacaan Al-Quran dengan audio berkualitas tinggi dari qari terkenal.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- **Penandaan Ayat**: Tandai ayat-ayat favorit Anda untuk referensi cepat.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# al-quran_app
+- **Pencarian**: Cari kata-kata atau ayat-ayat tertentu dalam teks Al-Quran.
+
+- **Tampilan yang Menyenangkan**: Tersedia berbagai tema dan opsi penyesuaian tampilan.
+

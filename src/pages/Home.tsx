@@ -66,7 +66,7 @@ const QuranSurahList: React.FC = () => {
 
                     />
                 </div>
-                <Marks/>
+                {/* <Marks/> */}
                 <div>
                     <div className='backdrop-blur-md backdrop-brightness  grid grid-cols-1 gap-4  p-5 py-10 sm:grid-cols-2 lg:grid-cols-3'>
 
