@@ -2,10 +2,10 @@
 
 Baca Quran adalah sebuah aplikasi yang dirancang untuk memudahkan pengguna dalam membaca dan menjelajahi teks suci Al-Quran. Aplikasi ini dibangun menggunakan teknologi modern, dan memberikan pengalaman yang bersih, interaktif, dan mendalam untuk menjelajahi ayat-ayat Al-Quran.
 
-<img src="./src/assets/Screenshot%202023-09-07%20120748.png" alt="Tampilan Aplikasi" width="400" height="300" />
-<img src="./src/assets/Screenshot%202023-09-07%20120827.png" alt="Tampilan Aplikasi" width="400" height="300" />
-<img src="./src/assets/Screenshot%202023-09-07%20120851.png" alt="Tampilan Aplikasi" width="400" height="300" />
-<img src="./src/assets/Screenshot%202023-09-07%20120906.png" alt="Tampilan Aplikasi" width="400" height="300" />
+<img src="./src/assets/Screenshot%202023-09-07%20120748.png" alt="Tampilan Aplikasi" height="300" />
+<img src="./src/assets/Screenshot%202023-09-07%20120827.png" alt="Tampilan Aplikasi" height="300" />
+<img src="./src/assets/Screenshot%202023-09-07%20120851.png" alt="Tampilan Aplikasi" height="300" />
+<img src="./src/assets/Screenshot%202023-09-07%20120906.png" alt="Tampilan Aplikasi" height="300" />
 ## Fitur Utama
 
 - **Baca Teks Quran**: Akses teks Al-Quran lengkap dengan terjemahan dalam berbagai bahasa.
