@@ -70,7 +70,7 @@ const JadwalSholat: React.FC = () => {
                     <p>{jadwalSholatData[jadwalAktif].jadwalSholat}</p>
                 </div>
                 <div className="flex justify-between">
-                    <p>{waktuMundur}</p>
+                    <p><b>- </b>{waktuMundur}</p>
                     <p>Kota Yogyakarta</p>
                 </div>
             </div>

@@ -97,9 +97,12 @@ const QuranSurahList: React.FC = () => {
                                     className='text-2xl flex items-center gap-4 border-b py-4 border-white/25 hover:border-unggu hover:scale-[1.05] transition-all duration-200'
                                 >
                                     <div className='relative flex justify-center items-center '>
-                                        <span className='absolute text-xl'>{surah.nomor}</span>
                                         <FiOctagon className="text-5xl text-unggu" />
+                                        <span className='absolute text-xl' style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
+                                            {surah.nomor}
+                                        </span>
                                     </div>
+
                                     <div className='flex gap-10 items-center w-full justify-between'>
                                         <div className='flex flex-col text-white items-start'>
                                             <span className=''>{surah.namaLatin}</span>

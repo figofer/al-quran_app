@@ -8,6 +8,7 @@ import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md'
 import { BiBookmark, BiShareAlt } from 'react-icons/bi'
 import { BsPlay, BsBookmarkFill, BsFillPlayFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom';
+import { FaFacebook, FaTwitter, FaWhatsapp } from 'react-icons/fa'; 
 import { useNavigate } from 'react-router-dom';
 const SurahPage: React.FC = ({ }) => {
 
@@ -148,7 +149,6 @@ const SurahPage: React.FC = ({ }) => {
         }
     }, [currentPlayingAyatIndex, surah]);
 
-    const [selectedAudio, setSelectedAudio] = useState<string | null>(null);
 
 
     if (!surah || !Array.isArray(surah.ayat)) {
@@ -169,7 +169,6 @@ const SurahPage: React.FC = ({ }) => {
     return (
         <>
             <div className='px-4 py-2 bg-primary max-w-xl mx-auto text-white'>
-
                 <nav className='bg-primary flex w-full z-30 items-center text-2xl sticky top-0 justify-between py-2'>
                     <div className='flex justify-between w-full items-center text-6xl'>
                         {(beforeSurahNumber === 0 || beforeSurahNumber === null) ? (
@@ -188,15 +187,8 @@ const SurahPage: React.FC = ({ }) => {
                         {nextSurahNumber !== null && (
                             <Link to={`/surah/${nextSurahNumber}`}><MdNavigateNext /></Link>
                         )}
-
-
-
-
                     </div>
-
                 </nav>
-
-
                 <div className='bg-gradient-to-r mt-4 flex flex-col items-center gap-10 from-[#D2963E] to-[#8C5400] rounded-2xl p-5 h-[270px]'>
                     <div className='flex flex-col items-center text-2xl gap-2'>
                         <b>{surah.namaLatin}</b>
@@ -208,12 +200,8 @@ const SurahPage: React.FC = ({ }) => {
                         <b>{surah.jumlahAyat} Ayat</b>
                     </div>
                     <p className='font-serif text-6xl '>{surah.nama}</p>
-
                 </div>
-
-
                 <div className='flex flex-col gap-10 pt-10 text-gray-300'>
-
                     {surah.ayat.map((ayat) => (
                         <div key={ayat.nomorAyat}>
                             <div className='bg-white/10 p-2 flex justify-between rounded-xl px-2'>
@@ -248,6 +236,7 @@ const SurahPage: React.FC = ({ }) => {
                                         onClick={() => toggleMarkAyat(ayat.nomorAyat)}>
                                         {markedAyat === ayat.nomorAyat ? <BsBookmarkFill className='text-red-500' /> : <BiBookmark />}
                                     </m.button>
+                                    
                                 </div>
                             </div>
                             <div>
