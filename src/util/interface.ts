@@ -12,6 +12,7 @@ interface Surah {
     tempatTurun: string;
     arti: string;
     ayat: {
+        length(length: any): unknown;
         nomorAyat: number;
         teksArab: string;
         teksLatin: string;

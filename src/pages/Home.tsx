@@ -42,7 +42,7 @@ const QuranSurahList: React.FC = () => {
 
         <>
 
-            <div className='px-4 py-2  h-cull  text-white'>
+            <div className='px-4 py-2  h-cull  mx-auto text-white'>
                 <Nav />
                 <div className='flex flex-col gap-2 px-2 py-4'>
                     <p className='text-white/60'>Assalamualaikum</p>
@@ -52,7 +52,7 @@ const QuranSurahList: React.FC = () => {
                 <div className='flex flex-col gap-6'>
                     <div className='flex justify-between px-5'>
                         <span className=' border-b-4 rounded-lg border-unggu pb-2 '>Surah</span>
-                        
+
                     </div>
 
                     <input
@@ -64,7 +64,7 @@ const QuranSurahList: React.FC = () => {
 
                     />
                 </div>
-                {/* <Marks/> */}
+
                 <div>
                     <div className='backdrop-blur-md backdrop-brightness  grid grid-cols-1 gap-4  p-5 py-10 sm:grid-cols-2 lg:grid-cols-3'>
 

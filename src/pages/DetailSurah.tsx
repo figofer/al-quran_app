@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { motion as m } from 'framer-motion';
 import { Surah } from '../util/interface';
 import { BiMenuAltLeft, BiSearch, BiHome } from 'react-icons/bi';
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md'
 import { BiBookmark, BiShareAlt } from 'react-icons/bi'
-import { BsPlay, BsBookmarkFill, BsFillFileEarmarkSpreadsheetFill } from 'react-icons/bs'
+import { BsPlay, BsBookmarkFill, BsFillPlayFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 const SurahPage: React.FC = ({ }) => {
@@ -67,10 +68,11 @@ const SurahPage: React.FC = ({ }) => {
     }, [readAyatIndices]);
 
 
-    const [play, setPlay] = useState(false);
-    const open = () => {
-        setPlay(!play)
-    }
+    const [play, setPlay] = useState<number | null>(null);
+
+
+
+
     const [markedAyat, setMarkedAyat] = useState<number | null>(null);
 
     useEffect(() => {
@@ -92,6 +94,63 @@ const SurahPage: React.FC = ({ }) => {
         }
     };
 
+
+
+    const [activeAudioIndex, setActiveAudioIndex] = useState<number | null>(null);
+    const [currentPlayingAyatIndex, setCurrentPlayingAyatIndex] = useState<number | null>(
+        null
+    );
+    // const togglePlayAudio = (index: number) => {
+    //     if (activeAudioIndex === index) {
+    //         setActiveAudioIndex(null);
+    //     } else {
+    //         setActiveAudioIndex(index);
+    //     }
+    // };
+
+    const togglePlayAudio = (index: number) => {
+        if (activeAudioIndex === index) {
+            setActiveAudioIndex(null);
+        } else {
+            setActiveAudioIndex(index);
+            setCurrentPlayingAyatIndex(index);
+        }
+    };
+    const audioRefs: React.RefObject<HTMLAudioElement>[] = Array.from(
+        { length: surah?.jumlahAyat || 0 },
+        () => React.createRef<HTMLAudioElement>()
+    );
+
+    useEffect(() => {
+        const handleAudioEnd = () => {
+            if (
+                surah &&
+                currentPlayingAyatIndex !== null &&
+                currentPlayingAyatIndex < surah.jumlahAyat - 1
+            ) {
+                const nextAyatIndex = currentPlayingAyatIndex + 1;
+                setCurrentPlayingAyatIndex(nextAyatIndex);
+                setActiveAudioIndex(nextAyatIndex);
+            } else {
+                setCurrentPlayingAyatIndex(null);
+                setActiveAudioIndex(null);
+            }
+        };
+
+        if (currentPlayingAyatIndex !== null && surah) {
+            const audioElement = audioRefs[currentPlayingAyatIndex].current;
+            if (audioElement) {
+                audioElement.addEventListener('ended', handleAudioEnd);
+                return () => {
+                    audioElement.removeEventListener('ended', handleAudioEnd);
+                };
+            }
+        }
+    }, [currentPlayingAyatIndex, surah]);
+
+    const [selectedAudio, setSelectedAudio] = useState<string | null>(null);
+
+
     if (!surah || !Array.isArray(surah.ayat)) {
         return <div className='bg-primary h-screen flex justify-center items-center text-white'>
 
@@ -109,7 +168,7 @@ const SurahPage: React.FC = ({ }) => {
 
     return (
         <>
-            <div className='px-4 py-2 bg-primary  text-white'>
+            <div className='px-4 py-2 bg-primary max-w-xl mx-auto text-white'>
 
                 <nav className='bg-primary flex w-full z-30 items-center text-2xl sticky top-0 justify-between py-2'>
                     <div className='flex justify-between w-full items-center text-6xl'>
@@ -123,7 +182,7 @@ const SurahPage: React.FC = ({ }) => {
                         )}
 
                         <Link to='/' className='text-3xl'>
-                            <BiHome/>
+                            <BiHome />
                         </Link>
 
                         {nextSurahNumber !== null && (
@@ -154,29 +213,41 @@ const SurahPage: React.FC = ({ }) => {
 
 
                 <div className='flex flex-col gap-10 pt-10 text-gray-300'>
+
                     {surah.ayat.map((ayat) => (
                         <div key={ayat.nomorAyat}>
                             <div className='bg-white/10 p-2 flex justify-between rounded-xl px-2'>
                                 <span className='bg-unggu text-black font-bold flex h-8 w-8  justify-center items-center rounded-full'>{ayat.nomorAyat}</span>
                                 <div className='text-unggu flex gap-8 text-2xl items-center'>
-                                    <BiShareAlt />
-                                    <button onClick={open}><BsPlay /></button>
-                                    {play &&
-                                        <div className='flex  justify-end py-4' >
-                                            {ayat.audio && ayat.audio['05'] && (
-                                                <audio className='' controls>
-                                                    <source src={ayat.audio['05']} type="audio/mp3" />
+                                    <m.button
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 0.9 }}>
+                                        <BiShareAlt />
+                                    </m.button>
+                                    <m.button
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 0.9 }}
+                                        className='text-3xl'
+                                        onClick={() => togglePlayAudio(ayat.nomorAyat)}>
+                                        {activeAudioIndex === ayat.nomorAyat ? <BsFillPlayFill className='text-green-500 ' /> : <BsPlay />}
+                                    </m.button>
+                                    {activeAudioIndex === ayat.nomorAyat && (
+
+                                        <div className='flex hidden  justify-end py-4'>
+                                            {ayat.audio && ayat.audio['01'] && (
+                                                <audio className='' controls autoPlay={activeAudioIndex === ayat.nomorAyat}>
+                                                    <source src={ayat.audio['01']} type="audio/mp3" />
                                                     Your browser does not support the audio element.
                                                 </audio>
                                             )}
                                         </div>
-
-
-                                    }
-
-                                    <button onClick={() => toggleMarkAyat(ayat.nomorAyat)}>
+                                    )}
+                                    <m.button
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 0.9 }}
+                                        onClick={() => toggleMarkAyat(ayat.nomorAyat)}>
                                         {markedAyat === ayat.nomorAyat ? <BsBookmarkFill className='text-red-500' /> : <BiBookmark />}
-                                    </button>
+                                    </m.button>
                                 </div>
                             </div>
                             <div>
@@ -186,12 +257,19 @@ const SurahPage: React.FC = ({ }) => {
                                 <div className='text-white/60 flex flex-col px-2 gap-4'>
                                     <i>{ayat.teksLatin}</i>
                                     <p>{ayat.teksIndonesia}</p>
+
                                 </div>
                             </div>
+
                         </div>
+
 
                     ))}
 
+
+                    <button className='flex items-center justify-center p-8 bg-white/10 rounded-lg'>
+                        <Link to={`/surah/${surah.suratSelanjutnya.nomor}`}>Ayat selanjutnya : {surah.suratSelanjutnya.namaLatin}</Link>
+                    </button>
                 </div>
 
             </div>
