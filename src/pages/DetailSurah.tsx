@@ -234,9 +234,9 @@ const SurahPage: React.FC = ({ }) => {
                                     {activeAudioIndex === ayat.nomorAyat && (
 
                                         <div className='flex hidden  justify-end py-4'>
-                                            {ayat.audio && ayat.audio['01'] && (
+                                            {ayat.audio && ayat.audio['05'] && (
                                                 <audio className='' controls autoPlay={activeAudioIndex === ayat.nomorAyat}>
-                                                    <source src={ayat.audio['01']} type="audio/mp3" />
+                                                    <source src={ayat.audio['05']} type="audio/mp3" />
                                                     Your browser does not support the audio element.
                                                 </audio>
                                             )}

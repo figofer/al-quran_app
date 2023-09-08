@@ -66,7 +66,7 @@ const QuranSurahList: React.FC = () => {
                 </div>
 
                 <div>
-                    <div className='backdrop-blur-md backdrop-brightness  grid grid-cols-1 gap-4  p-5 py-10 sm:grid-cols-2 lg:grid-cols-3'>
+                    <div className='backdrop-blur-md backdrop-brightness  grid grid-cols-1 gap-4  p-5 py-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
 
 
                         {searchQuery ? (
@@ -94,7 +94,7 @@ const QuranSurahList: React.FC = () => {
                                 <Link
                                     to={`/surah/${surah.nomor}`}
                                     key={surah.nomor}
-                                    className='text-2xl flex items-center gap-4 border-b py-4 border-border hover:border-unggu transition-colors duration-200'
+                                    className='text-2xl flex items-center gap-4 border-b py-4 border-white/25 hover:border-unggu hover:scale-[1.05] transition-all duration-200'
                                 >
                                     <div className='relative flex justify-center items-center '>
                                         <span className='absolute text-xl'>{surah.nomor}</span>
