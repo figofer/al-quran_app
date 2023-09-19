@@ -1,14 +1,14 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { motion as m } from 'framer-motion';
 import { Surah } from '../util/interface';
-import { BiMenuAltLeft, BiSearch, BiHome } from 'react-icons/bi';
+import {  BiHome } from 'react-icons/bi';
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md'
 import { BiBookmark, BiShareAlt } from 'react-icons/bi'
 import { BsPlay, BsBookmarkFill, BsFillPlayFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom';
-import { FaFacebook, FaTwitter, FaWhatsapp } from 'react-icons/fa'; 
+
 import { useNavigate } from 'react-router-dom';
 const SurahPage: React.FC = ({ }) => {
 
@@ -69,9 +69,7 @@ const SurahPage: React.FC = ({ }) => {
     }, [readAyatIndices]);
 
 
-    const [play, setPlay] = useState<number | null>(null);
-
-
+    
 
 
     const [markedAyat, setMarkedAyat] = useState<number | null>(null);

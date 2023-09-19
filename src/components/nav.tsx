@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { BiMenuAltLeft, BiSearch } from 'react-icons/bi';
-import { Link } from 'react-router-dom';
-import { Surah } from '../util/interface';
-import axios from 'axios';
+import  { useState } from 'react';
+import { BiMenuAltLeft} from 'react-icons/bi';
+
 import { motion as m } from 'framer-motion';
 
 const Nav = () => {

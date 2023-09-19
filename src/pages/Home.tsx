@@ -5,9 +5,9 @@ import { Surah } from '../util/interface';
 import { FiOctagon } from 'react-icons/fi';
 import Nav from '../components/nav';
 import Fuse from 'fuse.js';
-import JadwalSholatItem from '../components/JadwalSholatItem';
+
 import JadwalSholat from '../components/JadwalSholatItem';
-import Marks from '../components/Mark';
+
 
 
 const QuranSurahList: React.FC = () => {
@@ -28,13 +28,11 @@ const QuranSurahList: React.FC = () => {
         fetchSurahs();
     }, []);
 
-
     const fuseOptions = {
         keys: ['namaLatin', 'arti', 'nomor'],
         threshold: 0.4,
     };
     const fuse = new Fuse(surahs, fuseOptions);
-
     const searchResults = fuse.search(searchQuery);
 
 

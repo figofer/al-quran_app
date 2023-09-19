@@ -55,21 +55,9 @@ interface Surah {
     };
 }
 
-interface Tafsir {
-    id: number;
-    surah: number;
-    ayat: number;
-    tafsir: string;
-  }
 
-interface JadwalSholatItemProps {
-    namaSholat: string;
-    jadwalSholat: string;
-}
 
-interface Props {
-    beforeSurahNumber: number | null;
-  }
+
 
 
 export type { Surah };

@@ -4,7 +4,7 @@ import { DateTime } from 'luxon';
 const jadwalSholatData = [
     {
         namaSholat: 'Subuh',
-        jadwalSholat: '04:30',
+        jadwalSholat: '04:50',
     },
     {
         namaSholat: 'Dzuhur',
@@ -28,6 +28,7 @@ const JadwalSholat: React.FC = () => {
     const [jadwalAktif, setJadwalAktif] = useState(0);
     const [waktuMundur, setWaktuMundur] = useState('');
 
+
     useEffect(() => {
         const updateJadwalAktif = () => {
             const now = DateTime.now();
@@ -40,27 +41,33 @@ const JadwalSholat: React.FC = () => {
                 });
             });
 
-            const jadwalBerikutnyaIndex = jadwalSholatWaktu.findIndex((jadwal) =>
-                jadwal > now ? true : false
+            let jadwalBerikutnyaIndex = jadwalSholatWaktu.findIndex((jadwal) =>
+                jadwal > now
             );
 
-            if (jadwalBerikutnyaIndex !== -1) {
-                setJadwalAktif(jadwalBerikutnyaIndex);
-
-                // Hitung waktu mundur
-                const waktuMundurMillis = jadwalSholatWaktu[jadwalBerikutnyaIndex].toMillis() - now.toMillis();
-                const hours = Math.floor(waktuMundurMillis / 3600000);
-                const minutes = Math.floor((waktuMundurMillis % 3600000) / 60000);
-                const seconds = Math.floor((waktuMundurMillis % 60000) / 1000);
-                setWaktuMundur(`${hours}:${minutes}:${seconds}`);
+            if (jadwalBerikutnyaIndex === -1) {
+                jadwalBerikutnyaIndex = 0;
+                now.plus({ days: 1 });
             }
+
+            setJadwalAktif(jadwalBerikutnyaIndex);
+
+            const waktuMundurMillis = jadwalSholatWaktu[jadwalBerikutnyaIndex].toMillis() - now.toMillis();
+            const waktuMundurPositif = waktuMundurMillis < 0 ? waktuMundurMillis + 86400000 : waktuMundurMillis;
+
+            const hours = Math.floor(waktuMundurPositif / 3600000);
+            const minutes = Math.floor((waktuMundurPositif % 3600000) / 60000);
+            const seconds = Math.floor((waktuMundurPositif % 60000) / 1000);
+            setWaktuMundur(`${hours}:${minutes}:${seconds}`);
         };
 
-        updateJadwalAktif(); // Panggil fungsi pertama kali
-        const interval = setInterval(updateJadwalAktif, 1000); // Update setiap detik
+        updateJadwalAktif(); 
+        const interval = setInterval(updateJadwalAktif, 1000); 
 
         return () => clearInterval(interval);
     }, []);
+
+
 
     return (
         <div className="bg-gradient-to-r mt-4 from-[#D2963E] to-[#8C5400] rounded-2xl p-5 h-[170px] shadow-white  transition-colors hover:shadow-xl ">
