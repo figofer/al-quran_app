@@ -1,3 +1,4 @@
+# LinkAPP : https://al-quran-id.netlify.app/
 # Baca Quran
 
 Baca Quran adalah sebuah aplikasi yang dirancang untuk memudahkan pengguna dalam membaca dan menjelajahi teks suci Al-Quran. Aplikasi ini dibangun menggunakan typeScript,React.js dan vite.
